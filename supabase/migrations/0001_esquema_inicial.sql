@@ -328,7 +328,6 @@ begin
     'push_subscriptions', 'voice_usage'
   ] loop
     execute format('alter table public.%I enable row level security', t);
-    execute format('alter table public.%I force row level security', t);
   end loop;
 
   -- Tablas que el usuario lee y escribe completas desde el panel.

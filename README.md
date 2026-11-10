@@ -13,7 +13,7 @@ Estado: **fase 1 de 7** (base: autenticación, esquema con RLS, estructura de PW
 3. En **Authentication → URL Configuration**:
    - *Site URL*: la dirección de la app (por ejemplo `https://miagente.vercel.app`).
    - *Redirect URLs*: agregá `https://TU-DOMINIO/auth/confirmar` y `http://localhost:3000/auth/confirmar`.
-4. En **Authentication → Emails → Magic Link**, reemplazá el cuerpo por este, para que el correo traiga el enlace y el código:
+4. **Correo con código (requiere SMTP propio).** En el plan gratuito, Supabase no deja cambiar la plantilla del correo mientras se use su servicio de envío integrado: el correo trae solo el enlace. Para que también traiga el código (necesario para entrar desde la app instalada en iPhone), configurá un SMTP gratuito en **Authentication → Emails → SMTP Settings** y después usá este cuerpo en las plantillas **Magic Link** y **Confirm signup**:
 
    ```html
    <h2>Tu acceso a MiAgente</h2>
@@ -23,10 +23,9 @@ Estado: **fase 1 de 7** (base: autenticación, esquema con RLS, estructura de PW
    </p>
    ```
 
-   Usá el mismo cuerpo en la plantilla **Confirm signup** (es la que llega la primera vez).
 5. En **Project Settings → API** copiá la URL del proyecto, la clave pública y la clave de servicio.
 
-El correo integrado de Supabase permite muy pocos envíos por hora. Alcanza para un solo usuario; para más, hay que configurar un SMTP propio.
+El envío integrado de Supabase permite 2 correos por hora. Con SMTP propio ese límite deja de aplicar.
 
 ### 2. Variables de entorno
 

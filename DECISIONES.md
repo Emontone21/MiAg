@@ -20,6 +20,7 @@ Estas verificaciones se hicieron con búsquedas (la red de la sesión de trabajo
 ## Fase 1 — Base
 
 - **Ingreso con enlace y con código.** El mismo correo trae el enlace mágico y un código numérico. En iPhone el enlace abre Safari y no la app instalada, y la sesión no se comparte entre ambos; el código se escribe dentro de la app y resuelve eso.
+- **El código depende de un SMTP propio.** Verificado al configurar el proyecto: en el plan gratuito de Supabase no se puede editar la plantilla del correo con el envío integrado, así que el correo trae solo el enlace. Con un SMTP gratuito configurado, la plantilla incluye el código. El envío integrado además está limitado a 2 correos por hora.
 - **Sin Cache Components.** Next.js 16 lo activa en proyectos nuevos; se desactivó. La app es privada y muy interactiva: el panel lee los datos desde el navegador con la sesión del usuario, y no hay contenido público que convenga prerenderizar.
 - **El panel habla directo con Supabase.** La barrera de seguridad es RLS en la base. El `proxy.ts` solo refresca la sesión y redirige a quien no la tiene; no es la protección principal.
 - **Estados y categorías como texto con `check`**, no como tipos `enum` de Postgres: agregar un valor más adelante es una migración trivial.
