@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es-UY">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c0c0e" />
+    <title>Sin conexión · MiAgente</title>
+    <style>
+      html { color-scheme: dark; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0c0c0e;
+             color: #ededf0; font-family: ui-sans-serif, system-ui, sans-serif; }
+      main { max-width: 22rem; padding: 1.5rem; }
+      h1 { font-size: 1.25rem; margin: 0 0 .5rem; letter-spacing: -0.02em; }
+      p { color: #a5a5b0; line-height: 1.5; margin: 0 0 1.25rem; }
+      button { height: 40px; padding: 0 16px; border: 0; border-radius: 8px; background: #f5a524;
+               color: #1a1204; font: inherit; font-weight: 500; cursor: pointer; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Estás sin conexión</h1>
+      <p>MiAgente necesita internet para mostrar tus proyectos. Cuando vuelva la conexión, reintentá.</p>
+      <button onclick="location.reload()">Reintentar</button>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/*
+ * Sistema de diseño de MiAgente.
+ * Oscuro, un solo color de acento (ámbar) y jerarquía hecha con tipografía,
+ * no con adornos. Los colores semánticos (vencido, hecho, bloqueado) se usan
+ * solo para estado, nunca como decoración.
+ */
+@theme {
+  --color-fondo: #0c0c0e;        /* fondo de la app */
+  --color-panel: #141417;        /* barras, tarjetas */
+  --color-elevado: #1b1b20;      /* hover, campos, menús */
+  --color-borde: #26262c;
+  --color-borde-fuerte: #3a3a43;
+
+  --color-texto: #ededf0;        /* 15.9:1 sobre fondo */
+  --color-texto-2: #a5a5b0;      /* 7.9:1 */
+  --color-texto-3: #7d7d89;      /* 4.7:1 — mínimo para texto chico */
+
+  --color-acento: #f5a524;
+  --color-acento-fuerte: #ffb84d;
+  --color-acento-suave: #f5a52422;
+  --color-sobre-acento: #1a1204;
+
+  --color-peligro: #ff6b6b;
+  --color-peligro-suave: #ff6b6b1f;
+  --color-ok: #4cc38a;
+  --color-ok-suave: #4cc38a1f;
+  --color-aviso: #e0a84a;
+  --color-info: #6ea8fe;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-fondo);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+
+  /* Foco visible y parejo en toda la app: todo se puede usar con teclado. */
+  :focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background: var(--color-acento-suave);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@layer components {
+  .titulo-pagina {
+    font-size: 1.375rem;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .rotulo {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-texto-3);
+  }
+  .kbd {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    padding: 1px 5px;
+    border: 1px solid var(--color-borde-fuerte);
+    border-radius: 4px;
+    color: var(--color-texto-2);
+  }
+}
